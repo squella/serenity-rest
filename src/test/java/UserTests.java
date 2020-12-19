@@ -26,14 +26,35 @@ public class UserTests {
                 .describedAs("El administrador");
 
         actor.can(CallAnApi.at(url));
+
         SerenityRest.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
 
         actor.attemptsTo(
-                Get.resource("/users?page=2")
+
         );
 
         actor.should(
                 seeThat("el codigo de respuesta", new ResponseCode(), equalTo(200) )
+        );
+    }
+
+    @Test
+    public void getAllUsersEqualsTo() {
+        String url = "https://reqres.in/api";
+
+        Actor actor = Actor.named("Alejandro")
+                .describedAs("El administrador");
+
+        actor.can(CallAnApi.at(url));
+
+        SerenityRest.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
+
+        actor.attemptsTo(
+
+        );
+
+        actor.should(
+                seeThat("el codigo de respuesta", new ResponseCode(), equalTo(300) )
         );
     }
 
